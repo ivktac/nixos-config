@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  inherit (inputs) home-manager;
+in {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   # Enable the GNOME Desktop Environment.
@@ -16,4 +22,11 @@
       yelp
       simple-scan
     ]);
+
+  home-manager.users.ivktac = {
+    dconf = {
+      enable = true;
+      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    };
+  };
 }
