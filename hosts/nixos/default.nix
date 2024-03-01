@@ -1,4 +1,10 @@
-{ config, inputs, pkgs, lib, ...}: {
+{
+  config,
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [./hardware-configuration.nix];
 
   boot = {
@@ -26,11 +32,8 @@
 
   # Set the networking host name.
   networking.hostName = "nixos";
-  
+
   services = {
-    # Enable the X11 windowing system.
-    xserver.enable = true;
-    
     # Configure keymap in X11
     xserver.xkb = {
       layout = "us";
@@ -45,7 +48,7 @@
 
     # Enable power-profiles-daemon, a DBus daemon that allows changing system behavior based upon user-selected power profiles.
     power-profiles-daemon.enable = true;
-    
+
     # Enable Upower, a DBus service that provides power management support to applications
     upower = {
       enable = true;
