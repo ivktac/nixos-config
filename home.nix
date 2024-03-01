@@ -5,6 +5,7 @@
     ./home/programs/sh.nix
     ./home/programs/nvim.nix
     ./home/programs/git.nix
+    ./home/programs/firefox.nix
   ];
 
   home.username = "ivktac";
@@ -24,11 +25,5 @@
     neofetch
   ];
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
-  programs.firefox.enable = true;
-    
   programs.home-manager.enable = true;
 }

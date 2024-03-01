@@ -11,6 +11,7 @@
     plugins.fugitive.enable = true;
     plugins.gitsigns.enable = true;
     plugins.telescope.enable = true;
+    plugins.neo-tree.enable = true;
 
     plugins.telescope.keymaps = {
       "<C-p>" = {
@@ -19,6 +20,9 @@
       };
       "<leader>fg" = "live_grep";
     };
+
+    keymaps = [
+    ];
     
     options = {
       encoding = "utf-8";
@@ -45,4 +49,6 @@
       mapleader = " ";
     };
   };
+
+  home.sessionVariables.EDITOR = "nvim";
 }
