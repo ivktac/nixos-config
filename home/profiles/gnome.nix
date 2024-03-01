@@ -2,7 +2,7 @@
 
 {
   imports = [
-    #../modules/programs/firefox.nix
+    ../modules/programs/firefox.nix
     ../modules/programs/media
   ];
 
