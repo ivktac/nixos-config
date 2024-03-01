@@ -6,6 +6,7 @@
     ./home/programs/nvim.nix
     ./home/programs/git.nix
     ./home/programs/firefox.nix
+    ./home/programs/starship.nix
   ];
 
   home.username = "ivktac";
