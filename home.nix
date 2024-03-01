@@ -13,6 +13,7 @@
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
+    fira-code-nerdfont
     fzf
     bat
     du-dust
