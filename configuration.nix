@@ -86,11 +86,7 @@
     description = "Ivan Tkachuk";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
-      neovim
-      git
-      wget
-      curl
+    #  firefox
     #  thunderbird
     ];
   };
