@@ -13,16 +13,16 @@
 in {
   flake.nixosConfigurations = {
     nixos = nixosSystem {
-      inherit specialArgs; 
+      inherit specialArgs;
 
       modules = [
         ./nixos
-        
+
         "${modules}/config"
         "${modules}/programs"
         "${modules}/services"
-        "${profiles}/gnome.nix"
-        
+        "${profiles}/gnome"
+
         {
           home-manager = {
             users.ivktac.imports = homeImports.ivktac;

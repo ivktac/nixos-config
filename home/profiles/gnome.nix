@@ -1,6 +1,8 @@
-{ lib, pkgs, ... }:
-
 {
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ../modules/programs/firefox.nix
     ../modules/programs/media
@@ -32,6 +34,7 @@
     inherit
       (pkgs)
       tdesktop
+      tuba
       ;
   };
 }

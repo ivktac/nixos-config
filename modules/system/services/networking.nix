@@ -1,8 +1,9 @@
-{ lib, ... }:
+{lib, ...}: {
+  networking.networkmanager = {
+    enable = true;
+    wifi.backend = "iwd";
+  };
 
-{
-  networking.networkmanager.enable = true;
-  
   services = {
     gnome.glib-networking.enable = true;
   };
