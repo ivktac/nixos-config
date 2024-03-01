@@ -12,6 +12,11 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		
+		nh = {
+		  url = "github:viperML/nh";
+		  inputs.nixpkgs.follows = "nixpkgs";
+		};
 
     nix-index-db = {
       url = "github:Mic92/nix-index-database";

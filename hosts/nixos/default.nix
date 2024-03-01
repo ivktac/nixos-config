@@ -1,12 +1,5 @@
 { config, inputs, pkgs, lib, ...}: {
-  imports = [
-    ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
-  ];
-
-  home-manager = {
-    sharedModules = [{home.stateVersion = lib.mkForce config.system.stateVersion;}];
-  };
+  imports = [./hardware-configuration.nix];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -31,28 +24,8 @@
     vulkan-validation-layers
   ];
 
-  networking.networkmanager.enable = true;
+  # Set the networking host name.
   networking.hostName = "nixos";
-
-  time.timeZone = "Europe/Kyiv";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "uk_UA.UTF-8";
-    LC_IDENTIFICATION = "uk_UA.UTF-8";
-    LC_MEASUREMENT = "uk_UA.UTF-8";
-    LC_MONETARY = "uk_UA.UTF-8";
-    LC_NAME = "uk_UA.UTF-8";
-    LC_NUMERIC = "uk_UA.UTF-8";
-    LC_PAPER = "uk_UA.UTF-8";
-    LC_TELEPHONE = "uk_UA.UTF-8";
-    LC_TIME = "uk_UA.UTF-8";
-  };
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
   
   services = {
     # Enable the X11 windowing system.
@@ -81,36 +54,5 @@
       percentageAction = 10;
       criticalPowerAction = "Hibernate";
     };
-
-    # Enable the OpenSSH daemon
-    openssh.enable = true;
-
-    # Enable sound with pipewire
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
   };
-
-  programs.fish.enable = true;
-
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  users.users.ivktac = {
-    isNormalUser = true;
-    description = "Ivan Tkachuk";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-    shell = pkgs.fish;
-  };
-
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = lib.mkDefault "23.11";
 }

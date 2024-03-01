@@ -2,6 +2,8 @@
 let
   sharedModules = [
     ./modules/programs/git.nix
+    ./modules/programs/gpg.nix
+    ./modules/programs/ssh.nix
     ./modules/programs/utils.nix
     ./modules/programs/sh.nix
 #    ./modules/programs/nvim.nix
@@ -17,8 +19,7 @@ let
   };
 
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
-  inherit (inputs) nixvim nur;
-
+  
   pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 in {
   _module.args = {inherit homeImports;};
@@ -27,9 +28,7 @@ in {
     homeConfigurations = {
       ivktac = homeManagerConfiguration {
         inherit pkgs;
-        modules = homeImports.ivtkac
-          ++ { nixpkgs.overlays = [ nur.overlay ]; }
-          ++ nixvim.homeManagerModules.nixvim;
+        modules = homeImports.ivtkac;
       };
     };
   };

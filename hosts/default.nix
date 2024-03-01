@@ -5,8 +5,8 @@
   ...
 }: let
   inherit (inputs.nixpkgs.lib) nixosSystem;
-  inherit (inputs) nur;
 
+  modules = "${self}/modules/system";
   profiles = "${self}/hosts/profiles";
 
   specialArgs = {inherit inputs self;};
@@ -17,9 +17,10 @@ in {
 
       modules = [
         ./nixos
-
-        { nixpkgs.overlays = [ nur.overlay ]; }
-
+        
+        "${modules}/config"
+        "${modules}/programs"
+        "${modules}/services"
         "${profiles}/gnome.nix"
         
         {
