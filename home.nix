@@ -21,6 +21,7 @@
     ripgrep
     procs
     yt-dlp
+    telegram-desktop
   ];
 
   programs.home-manager.enable = true;
