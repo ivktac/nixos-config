@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./gnome/gnome-keyring.nix
+    ./gnome/polkit-gnome.nix
     ./networking.nix
     ./openssh.nix
     ./pipewire.nix
