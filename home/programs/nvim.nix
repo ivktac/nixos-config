@@ -8,6 +8,15 @@
     plugins.lightline.enable = true;
     plugins.fugitive.enable = true;
     plugins.gitsigns.enable = true;
+    plugins.telescope.enable = true;
+
+    plugins.telescope.keymaps = {
+      "<C-p>" = {
+        action = "git_files";
+        desc = "Telescope Git Files";
+      };
+      "<leader>fg" = "live_grep";
+    };
     
     options = {
       encoding = "utf-8";
