@@ -5,6 +5,8 @@
     enable = true;
     
     colorschemes.catppuccin.enable = true;
+    colorschemes.catppuccin.transparentBackground = true;
+
     plugins.lightline.enable = true;
     plugins.fugitive.enable = true;
     plugins.gitsigns.enable = true;

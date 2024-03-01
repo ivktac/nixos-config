@@ -22,6 +22,7 @@
     procs
     eza
     yt-dlp
+    neofetch
   ];
 
   home.sessionVariables = {
