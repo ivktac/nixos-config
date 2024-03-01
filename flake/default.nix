@@ -3,6 +3,7 @@
     ./pre-commit-hooks.nix
     ../home
     ../hosts
+    ../pkgs
   ];
 
   systems = ["x86_64-linux"];
@@ -20,7 +21,7 @@
         nil
       ];
       name = "dots";
-      
+
       DIRENV_LOG_FORMAT = "";
       shellHook = ''
         ${config.pre-commit.installationScript}

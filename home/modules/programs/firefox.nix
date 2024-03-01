@@ -1,5 +1,10 @@
-{ inputs, pkgs, ... }:
-let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  firefox-gnome-theme = inputs.self.packages.${pkgs.system}.firefox-gnome-theme;
+
   mimeTypes = [
     "application/json"
     "application/x-extension-htm"
@@ -16,9 +21,8 @@ let
     "x-scheme-handler/unknown"
     "x-scheme-handler/https"
   ];
-in
-{
-  home.sessionVariables.BROWSER = "firefox"; 
+in {
+  home.sessionVariables.BROWSER = "firefox";
 
   xdg.mimeApps.defaultApplications = builtins.listToAttrs (map (mimeType: {
       name = mimeType;
@@ -51,7 +55,21 @@ in
         "widget.dmabuf.force-enabled" = true;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "svg.context-properties.content.enabled" = true;
+        "gnomeTheme.hideSingleTab" = true;
+        "gnomeTheme.bookmarksToolbarUnderTabs" = true;
+        "gnomeTheme.normalWidthTabs" = false;
+        "gnomeTheme.tabsAsHeaderbar" = false;
       };
+
+      userChrome = ''
+        @import "${firefox-gnome-theme}/share/firefox-gnome-theme/userChrome.css";
+      '';
+
+      userContent = ''
+        @import "${firefox-gnome-theme}/share/firefox-gnome-theme/userContent.css";
+      '';
+
+      extraConfig = builtins.readFile "${firefox-gnome-theme}/share/firefox-gnome-theme/configuration/user.js";
     };
   };
 }
