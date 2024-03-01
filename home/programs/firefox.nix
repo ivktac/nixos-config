@@ -32,7 +32,7 @@ in
     profiles.ivktac = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         darkreader
-        octotree
+        sponsorblock
         refined-github
         ublock-origin
         vimium
