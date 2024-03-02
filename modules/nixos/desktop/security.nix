@@ -23,7 +23,7 @@
   programs.gnupg.agent = {
     enable = true;
     pinentryFlavor = "gnome3";
-    enableSSHSupport = false;
+    enableSSHSupport = true;
     settings.default-cache-ttl = 4 * 60 * 60; # 4 hours
   };
 }

@@ -4,7 +4,7 @@
   inputs,
   ...
 }: {
-   nix = {
+  nix = {
     registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
   };
