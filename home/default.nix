@@ -10,7 +10,7 @@
     ./modules/programs/utils.nix
     ./modules/programs/sh.nix
     inputs.nixvim.homeManagerModules.nixvim
-    ./modules/programs/nvim.nix
+    ./modules/programs/nvim
     ./modules/programs/helix.nix
     ./modules/programs/starship.nix
   ];
