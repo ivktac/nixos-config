@@ -1,10 +1,6 @@
 {pkgs, ...}: {
-  # Don't allow mutation of users outside the config.
-  users.mutableUsers = false;
-
   users.users.ivktac = {
     isNormalUser = true;
-    uid = 1000;
     home = "/home/ivktac";
     description = "Ivan Tkachuk";
     extraGroups = ["libvirtd" "networkmanager" "wheel"];

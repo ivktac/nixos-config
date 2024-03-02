@@ -27,7 +27,7 @@
     upower.percentageLow = 30;
     upower.percentageCritical = 20;
     upower.percentageAction = 10;
-    upower.criticalPowerAction = "Hybernate";
+    upower.criticalPowerAction = "Hibernate";
   };
 
   # networking.firewall.allowedTCPPorts = [ ... ];

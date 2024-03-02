@@ -74,10 +74,10 @@
 
   services.xserver.displayManager.gdm.enable = true;
 
-  services.xserver.displayManager.autoLogin = false;
+  services.xserver.displayManager.autoLogin.enable = false;
   services.xserver.displayManager.gdm.autoSuspend = false;
 
-  services.xserver.desktopManager.gnome = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

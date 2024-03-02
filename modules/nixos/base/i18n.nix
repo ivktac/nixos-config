@@ -1,7 +1,7 @@
 {...}: {
   # Set your time zone.
   time.timeZone = "Europe/Kyiv";
-  time.hardwareClock.inLocalTime = true;
+  time.hardwareClockInLocalTime = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
 

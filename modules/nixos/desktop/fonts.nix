@@ -55,7 +55,7 @@
 
       defaultFonts = {
         serif = ["Source Han Serif SC" "Source Han Serif TC" "Noto Color Emoji"];
-        ansSerif = ["Source Han Sans SC" "Source Han Sans TC" "Noto Color Emoji"];
+        sansSerif = ["Source Han Sans SC" "Source Han Sans TC" "Noto Color Emoji"];
         monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji" "Symbols Nerd Font"];
         emoji = ["Noto Color Emoji"];
       };

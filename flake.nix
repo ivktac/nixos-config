@@ -44,6 +44,8 @@
     ...
   }: let
     mylib = import ./lib {inherit inputs;};
+
+    pkgs = nixpkgs.legacyPackages."x86_64-linux";
   in
     with mylib; {
       nixosConfigurations = {
@@ -57,10 +59,20 @@
       homeManagerModules.default = ./modules/home-manager;
       nixosModules.default = ./modules/nixos;
 
-      packages = forAllSystems (
-        pkgs: {
-          firefox-gnome-theme = pkgs.callPackage ./pkgs/firefox-gnome-theme {};
-        }
-      );
+      packages.x86_64-linux = {
+        firefox-gnome-theme = pkgs.callPackage ./pkgs/firefox-gnome-theme {};
+      };
+
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        packages = with pkgs; [
+          alejandra
+          deadnix
+          git
+          nil
+        ];
+        name = "dots";
+      };
+
+      formatter = pkgs.alejandra;
     };
 }
