@@ -7,6 +7,7 @@
     ./starship.nix
     ./utils.nix
     ./helix.nix
+    ./media.nix
     ./vscode
   ];
 

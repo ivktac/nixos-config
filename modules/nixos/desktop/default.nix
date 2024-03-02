@@ -64,16 +64,74 @@
     xdg-desktop-portal-gnome
   ];
 
-  services.xserver.enable = true;
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  # Debloat GNOME
+  services = {
+    xserver = {
+      # Due to the way desktop configuration works in Nixpkgs, we have to install
+      # an X server even if we only use Wayland.
+      enable = true;
 
-  services.xserver.displayManager.gdm.enable = true;
+      # Enable touchpad support (enabled default in most desktopManager).
+      libinput.enable = true;
 
-  services.xserver.displayManager.autoLogin.enable = false;
-  services.xserver.displayManager.gdm.autoSuspend = false;
+      displayManager.gdm.enable = true;
+      displayManager.autoLogin.enable = false;
+      displayManager.gdm.autoSuspend = false;
+      desktopManager.gnome.enable = true;
 
-  services.xserver.desktopManager.gnome.enable = true;
+      # We can exclude these packages without breaking X in gnome-shell, even if
+      # I almost never use it.
+      excludePackages =
+        [pkgs.xterm]
+        ++ (with pkgs.xorg; [
+          iceauth
+          xauth
+          xf86inputevdev
+          xinput
+          xlsclients
+          xorgserver
+          xprop
+          xrandr
+          xrdb
+          xset
+          xsetroot
+        ]);
+    };
+
+    # Disable unused  GNOME module features.
+    dleyna-renderer.enable = false;
+    dleyna-server.enable = false;
+    hardware.bolt.enable = false;
+    gnome = {
+      evolution-data-server.enable = true;
+      gnome-browser-connector.enable = false;
+      gnome-initial-setup.enable = false;
+      gnome-online-accounts.enable = true;
+      gnome-online-miners.enable = true;
+      gnome-user-share.enable = false;
+      rygel.enable = false;
+    };
+  };
+  # Most of these are optional programs added by services.gnome.core-services
+  # and etc., but the module sets other useful options so it is better to
+  # exclude these instead of disabling the module.
+  environment.gnome.excludePackages = with pkgs.gnome; [
+    baobab # disk usage analyzer
+    epiphany # web browser
+    gnome-characters
+    gnome-clocks
+    gnome-contacts
+    gnome-music
+    gnome-logs
+    gnome-themes-extra
+    pkgs.gnome-connections
+    pkgs.gnome-tour
+    pkgs.gnome-user-docs
+    pkgs.orca # screen reader
+    simple-scan
+    totem # video player
+    yelp # help viewer
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
