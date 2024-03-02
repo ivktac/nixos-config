@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     act
     gist
@@ -12,7 +10,7 @@
     enable = true;
     lfs.enable = true;
     delta.enable = true;
-    
+
     userName = "ivktac";
     userEmail = "git@tkachuk.email";
     signing = {
@@ -56,7 +54,7 @@
       ss = "status";
       st = "status";
     };
-    
+
     extraConfig = {
       init.defaultBranch = "main";
       branch.autosetupmerge = "true";
