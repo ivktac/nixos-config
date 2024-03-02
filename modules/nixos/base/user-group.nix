@@ -4,7 +4,7 @@
     home = "/home/ivktac";
     description = "Ivan Tkachuk";
     extraGroups = ["libvirtd" "networkmanager" "wheel"];
-    shell = pkgs.bashInteractive;
+    shell = pkgs.bash;
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOm9UvpGfoE4PZMc5LsIoghQmHjkg1sB2i1Hlpxiy1Lc git@tkachuk.email"

@@ -42,7 +42,6 @@
   terminal = {
     "terminal.integrated.fontSize" = 13;
     "terminal.integrated.smoothScrolling" = true;
-    "terminal.integrated.fontFamily" = "'Fira Code', 'Material Design Icons'";
   };
 
   window = {
