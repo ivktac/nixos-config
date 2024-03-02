@@ -36,13 +36,13 @@
   };
 
   telemetry = {
-    "redhat.telemetry.enabled" = false;
     "telemetry.telemetryLevel" = "off";
   };
 
   terminal = {
     "terminal.integrated.fontSize" = 13;
     "terminal.integrated.smoothScrolling" = true;
+    "terminal.integrated.fontFamily" = "'Fira Code', 'Material Design Icons'";
   };
 
   window = {
@@ -55,7 +55,7 @@
   workbench = {
     "workbench.colorTheme" = "Catppuccin Macchiato";
     "workbench.iconTheme" = "catppuccin-macchiato";
-    "workbench.panel.defaultLocation" = "right";
+    "workbench.panel.defaultLocation" = "bottom";
     "workbench.productIconTheme" = "icons-carbon";
     "workbench.sideBar.location" = "left";
     "workbench.startupEditor" = "none";
