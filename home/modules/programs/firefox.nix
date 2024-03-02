@@ -40,6 +40,7 @@ in {
         refined-github
         ublock-origin
         vimium
+        multi-account-containers
       ];
 
       settings = {
