@@ -9,6 +9,7 @@
     ./helix.nix
     ./media.nix
     ./vscode
+    ./nixvim
   ];
 
   programs.ssh.enable = true;

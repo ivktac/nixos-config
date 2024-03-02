@@ -27,10 +27,10 @@
       belloff = "all";
 
       guicursor = "";
+    };
 
-      globals = {
-        mapleader = " ";
-      };
+    globals = {
+      mapleader = " ";
     };
   };
 }

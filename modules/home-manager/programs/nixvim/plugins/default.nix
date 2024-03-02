@@ -1,20 +1,19 @@
 {
   imports = [
-    ./treesitter.nix
+    ./alpha.nix
+    ./appearance.nix
+    ./completion.nix
+    ./git.nix
+    ./icons.nix
+    ./lsp.nix
+    ./lsp.nix
+    ./neotree.nix
     ./telescope.nix
-    ./fugitive.nix
+    ./treesitter.nix
   ];
 
   programs.nixvim = {
     colorschemes.catppuccin.enable = true;
     colorschemes.catppuccin.transparentBackground = true;
-
-    plugins.neo-tree.enable = true;
-
-    plugins.lualine = {
-      enable = true;
-    };
-
-    plugins.gitsigns.enable = true;
   };
 }

@@ -16,10 +16,8 @@
       noto-fonts-emoji
       noto-fonts-cjk
 
-      source-sans
-      source-serif
-      source-han-sans
-      source-han-serif
+      fira-code
+      fira-code-symbols
 
       # nerdfonts
       # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/pkgs/data/fonts/nerdfonts/shas.nix
@@ -33,6 +31,7 @@
           "Iosevka"
         ];
       })
+      (google-fonts.override {fonts = ["Inter"];})
       julia-mono
       dejavu_fonts
     ];
@@ -54,10 +53,10 @@
       };
 
       defaultFonts = {
-        serif = ["Source Han Serif SC" "Source Han Serif TC" "Noto Color Emoji"];
-        sansSerif = ["Source Han Sans SC" "Source Han Sans TC" "Noto Color Emoji"];
-        monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji" "Symbols Nerd Font"];
         emoji = ["Noto Color Emoji"];
+        monospace = ["Fira Code" "Noto Color Emoji" "Symbols Nerd Font"];
+        serif = ["Noto Serif" "Noto Color Emoji"];
+        sansSerif = ["Inter" "Noto Color Emoji"];
       };
     };
   };
