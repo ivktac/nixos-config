@@ -35,6 +35,7 @@
       (pkgs)
       tdesktop
       tuba
+      blender
       ;
   };
 }

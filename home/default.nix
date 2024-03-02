@@ -13,6 +13,7 @@
     ./modules/programs/nvim
     ./modules/programs/helix.nix
     ./modules/programs/starship.nix
+    ./modules/programs/vscode
   ];
 
   homeImports = {
@@ -20,7 +21,6 @@
       [
         ./home.nix
         ./profiles/gnome.nix
-        ./profiles/work.nix
       ]
       ++ lib.concatLists [sharedModules];
   };
