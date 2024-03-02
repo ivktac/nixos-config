@@ -1,4 +1,4 @@
-{...}: {
+{lib,...}: {
   imports = [./hardware-configuration.nix];
 
   # Bootloader.
@@ -7,5 +7,5 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  system.stateVersion = "23.11";
+  system.stateVersion = lib.mkDefault "23.11";
 }

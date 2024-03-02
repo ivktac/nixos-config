@@ -40,7 +40,13 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    home-manager,
     nur,
+    nh,
+    nix-index-database,
+    nix-vscode-extensions,
+    nixvim,
+    pre-commit-hooks,
     ...
   }: let
     mylib = import ./lib {inherit inputs;};
