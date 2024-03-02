@@ -54,6 +54,8 @@
     gnused # GNU sed, very powerful(mainly for replacing text in files)
     gawk # GNU awk, a pattern scanning and processing language
     jq # A lightweight and flexible command-line JSON processor
+    fd
+    ripgrep
 
     # networking tools
     mtr # A network diagnostic tool

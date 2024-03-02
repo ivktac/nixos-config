@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ lib, pkgs, ...}: {
   # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
   sound.enable = true;
   # Disable pulseaudio, it conflicts with pipewire too.
@@ -20,6 +20,17 @@
     jack.enable = true;
     wireplumber.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    gst_all_1.gstreamer
+  ];
+
+  environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
+    gst-plugins-good
+    gst-plugins-bad
+    gst-plugins-ugly
+    gst-libav
+  ]);
 
   hardware.bluetooth.enable = true;
   hardware.enableAllFirmware = true;

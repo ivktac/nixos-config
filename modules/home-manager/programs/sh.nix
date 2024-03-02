@@ -25,8 +25,7 @@
     untar = "tar -xvf";
     untargz = "tar -xzf";
     ytmp3 = ''
-      ${getExe yt-dlp} --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --embed-thumbnail --embed-metadata --output "$(title)%s.$(ext)s"
-    '';
+      ${lib.getExe yt-dlp} --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --embed-thumbnail --embed-metadata --output "%(title)s.%(ext)s"'';
   };
 in {
   programs.bash = {

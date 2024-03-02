@@ -18,6 +18,9 @@
 
   # for power management
   services = {
+    # Enable the ACPI daemon.
+    acpid.enable = true;
+
     # Enable power-profiles-daemon, a DBus daemon that allows changing system behavior based upon user-selected power profiles.
     power-profiles-daemon = {
       enable = true;
@@ -89,6 +92,17 @@
     hdparm # for disk performance, command
     dmidecode # a tool that reads information about your system's hardware from the BIOS according to the SMBIOS/DMI standard
     parted
+
+    acpi
+    ffmpeg-full
+    libva
+    libva-utils
+    mesa
+    pciutils
+    vulkan-extension-layer
+    vulkan-loader
+    vulkan-tools
+    vulkan-validation-layers
   ];
 
   environment.variables.EDITOR = "nvim";
