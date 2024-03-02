@@ -1,12 +1,9 @@
 {
-  description = "My NixOS Configuration!";
-
-  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
+  description = "NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/nur";
-    flake-utils.url = "github:numtide/flake-utils";
     catppuccin-vsc.url = "github:catppuccin/vscode";
 
     home-manager = {
@@ -19,14 +16,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-index-db = {
+    nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
-      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -35,15 +31,36 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
-      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    nur,
+    ...
+  }: let
+    mylib = import ./lib {inherit inputs;};
+  in
+    with mylib; {
+      nixosConfigurations = {
+        nixos = mkSystem ./hosts/nixos/configuration.nix;
+      };
+
+      homeConfigurations = {
+        "ivktac@nixos" = mkHome "x86_64-linux" ./hosts/nixos/home.nix;
+      };
+
+      homeManagerModules.default = ./modules/home-manager;
+      nixosModules.default = ./modules/nixos;
+
+      packages = forAllSystems (
+        pkgs: {
+          firefox-gnome-theme = pkgs.callPackage ./pkgs/firefox-gnome-theme {};
+        }
+      );
+    };
 }
