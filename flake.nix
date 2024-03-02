@@ -7,6 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/nur";
     flake-utils.url = "github:numtide/flake-utils";
+    catppuccin-vsc.url = "github:catppuccin/vscode";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,6 +21,12 @@
 
     nix-index-db = {
       url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

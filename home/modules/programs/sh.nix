@@ -1,8 +1,12 @@
-{ config, pkgs, lib, ... }:
-
-let
-  shellAliases = with lib; with pkgs; {
-    cat = "${getExe bat} --theme=base16 --number --color=always --paging=never --tabs=2 --wrap=never";
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  shellAliases = with lib;
+  with pkgs; {
+    cat = "${getExe bat} --number --color=always --paging=never --tabs=2 --wrap=never";
     cp = "cp -iv";
     du = getExe du-dust;
     fcd = "cd $(find -type d | ${getExe fzf})";
@@ -25,8 +29,7 @@ let
       ${getExe yt-dlp} --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --embed-thumbnail --embed-metadata --output "$(title)%s.$(ext)s"
     '';
   };
-in
-{
+in {
   programs.bash = {
     inherit shellAliases;
     enable = true;
@@ -36,8 +39,14 @@ in
     inherit shellAliases;
     enable = true;
     plugins = with pkgs; [
-      { name = "fzf-fish"; src = fishPlugins.fzf-fish.src; }
-      { name = "forgit"; src = fishPlugins.forgit.src; }
+      {
+        name = "fzf-fish";
+        src = fishPlugins.fzf-fish.src;
+      }
+      {
+        name = "forgit";
+        src = fishPlugins.forgit.src;
+      }
     ];
   };
 }
