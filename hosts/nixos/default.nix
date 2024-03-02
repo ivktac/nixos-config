@@ -23,7 +23,6 @@
     libva-utils
     mesa
     pciutils
-    v4l-utils
     vulkan-extension-layer
     vulkan-loader
     vulkan-tools

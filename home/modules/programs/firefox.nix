@@ -44,6 +44,7 @@ in {
       ];
 
       settings = {
+        "extensions.pocket.enabled" = false;
         "browser.tabs.loadInBackground" = true;
         "gfx.canvas.accelerated" = true;
         "gfx.webrender.enabled" = true;
