@@ -64,6 +64,7 @@
 
       homeManagerModules.default = ./modules/home-manager;
       nixosModules.default = ./modules/nixos;
+      nixosModules.gnome = ./profiles/gnome
 
       packages.x86_64-linux = {
         firefox-gnome-theme = pkgs.callPackage ./pkgs/firefox-gnome-theme {};

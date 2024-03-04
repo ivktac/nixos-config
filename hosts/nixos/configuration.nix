@@ -1,5 +1,8 @@
 {lib, pkgs, ...}: {
-  imports = [./hardware-configuration.nix];
+  imports = [
+    ./hardware-configuration.nix
+    ../profiles/gnome
+  ];
 
   # Custom kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -7,6 +10,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  hardware.cpu.amd.updateMicrocode = true;
 
   networking.hostName = "nixos"; # Define your hostname.
 

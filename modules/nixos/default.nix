@@ -30,6 +30,7 @@
       inherit mylib;
       outputs = inputs.self.outputs;
     };
+
     users.ivktac = {
       imports = [
         outputs.homeManagerModules.default

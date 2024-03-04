@@ -4,6 +4,8 @@
 
   inherit (inputs.nixpkgs.lib) nixosSystem genAttrs;
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
+
+  wm = "gnome";
 in rec {
   pkgsFor = system: inputs.nixpkgs.legacyPackages.${system};
 
@@ -13,6 +15,7 @@ in rec {
       modules = [
         config
         outputs.nixosModules.default
+        lib.mkIf (wm == "gnome") outputs.nixosModules.gnome
       ];
     };
 

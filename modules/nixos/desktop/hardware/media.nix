@@ -1,4 +1,4 @@
-{ lib, pkgs, ...}: {
+{ lib, pkgs, ... }: {
   # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
   sound.enable = true;
   # Disable pulseaudio, it conflicts with pipewire too.
@@ -21,33 +21,20 @@
     wireplumber.enable = true;
   };
 
+  # GStreamer is a library for constructing graphs of media-handling components.
+  # The applications it supports range from simple Ogg/Vorbis playback, audio/video streaming to complex audio (mixing) and video (non-linear editing) processing.
+  #     https://gstreamer.freedesktop.org/
   environment.systemPackages = with pkgs; [
     gst_all_1.gstreamer
   ];
 
+  # GStreamer plugins
+  #    https://gstreamer.freedesktop.org/documentation/plugins_doc.html
+  #   https://nixos.wiki/wiki/GStreamer
   environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
     gst-plugins-good
     gst-plugins-bad
     gst-plugins-ugly
     gst-libav
   ]);
-
-  hardware.bluetooth.enable = true;
-  hardware.enableAllFirmware = true;
-  hardware.cpu.amd.updateMicrocode = true;
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  location.provider = "geoclue2";
-
-  services = {
-    printing.enable = true;
-    geoclue2.enable = true;
-    udev.packages = with pkgs; [
-      gnome.gnome-settings-daemon
-    ];
-  };
 }
